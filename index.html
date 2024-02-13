@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+
+     <section class="contact">
+          <h4 class="skills__title">Tamaño de posicion</h4>
+          <div class="form-container">
+               <form action="">
+                    <div class="c inp-cont cap">
+                         <label for="">Capital $</label>
+                         <input type="number" class="inp-cap">
+                    </div>
+
+                    <div class="c risk-cont">
+                         <div class="inp-cont">
+                              <label for="">Riesgo %</label>
+                              <input type="number" class="risk-inp">
+                         </div>
+                         <div class="inp-cont">
+                              <label for="">Riesgo $</label>
+                              <input type="number" class="risk-dol" disabled>
+                         </div>
+                    </div>
+
+                    <div class="c entry-sl-cont">
+                         <div class="inp-cont">
+                              <label for="">Entrada</label>
+                              <input type="number" class="entry-inp">
+                         </div>
+                         <div class="inp-cont">
+                              <label for="">Stop-loss</label>
+                              <input type="number" class="sl-inp">
+                         </div>
+                    </div>
+
+                    <div class="c entry-sl-cont">
+                         <div class="inp-cont">
+                              <label for="">Posicion $</label>
+                              <input type="text" class="tam-pos-dol" disabled>
+                         </div>
+                         <div class="inp-cont">
+                              <label for="">Posicion activo</label>
+                              <input type="text" class="tam-pos-act" disabled>
+                         </div>
+                    </div>
+
+                    <button class="btn btn-calc-position-size">Calcular</button>
+               </form>
+          </div>
+
+     </section>
+
+
+     <section class="contact">
+          <h4 class="skills__title">Precio de liquidacion</h4>
+          <div class="form-container">
+               <form action="" class="contact__form">
+                    <label for="">Precio de entrada</label>
+                    <input class="entrada contact__input" type="number" />
+                    <label for="">Apalancamiento</label>
+                    <input class="apalancamiento contact__input" type="number" />
+                    <label for="">Liquidacion Long</label>
+                    <input class="liq-long contact__input" type="number" disabled />
+                    <label for="">Liquidacion Short</label>
+                    <input class="liq-short contact__input" type="number" disabled />
+
+                    <button id="calcular-liquidacion" class="btn">Calcular</button>
+               </form>
+          </div>
+
+     </section>
+
+     <section class="contact">
+          <h4 class="skills__title">Profit / Loss</h4>
+          <div class="form-container">
+               <form class="contact__form">
+                    <div class="c risk-cont">
+                         <div class="inp-cont">
+                              <label for="apalancamiento">Apalancamiento</label>
+                              <input class="contact__input" type="number" id="apalancamiento" name="apalancamiento">
+                         </div>
+                         <div class="inp-cont">
+                              <label for="margenInicial">Cantidad (USDT)</label>
+                              <input class="contact__input" type="number" id="cantidad" name="margenInicial">
+                         </div>
+                    </div>
+                    <div class="c risk-cont">
+                         <div class="inp-cont">
+                              <label for="precioEntrada">Precio entrada</label>
+                              <input class="contact__input" type="number" id="precioEntrada" name="precioEntrada">
+                         </div>
+                         <div class="inp-cont">
+                              <label for="precioActual">Precio salida</label>
+                              <input class="contact__input" type="number" id="precioSalida" name="precioActual">
+                         </div>
+                    </div>
+
+                    <label for="precioEntrada">Margen inicial (USDT)</label>
+                    <input class="contact__input" type="text" id="margen-inicial" name="precioEntrada" disabled>
+                    <label for="precioActual">Ganancia</label>
+                    <input class="contact__input" type="text" id="ganancia" name="precioActual" disabled>
+                    <label for="precioActual">ROI</label>
+                    <input class="contact__input" type="text" id="roi" name="precioActual" disabled>
+
+                    <button id="calcularProfit" class="btn">Calcular</button>
+               </form>
+          </div>
+     </section>
+
+     <script src="tamañoPosicion.js"></script>
+     <script src="liquidacion.js"></script>
+     <script src="pnl.js"></script>
+</body>
+
+</html>
