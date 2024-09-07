@@ -10,16 +10,12 @@ const respRoi = document.getElementById('roi')
 const botonCalcular = document.getElementById('calcularProfit')
 
 function calcularProfit(precioEntrada, apalancamiento, cantidad, precioSalida) {
-	const margenInicial = cantidad / apalancamiento // Cantidad sin apalancar
-	const porcentajeCambio =
-		((precioSalida - precioEntrada) / precioEntrada) * 100
+	const margenInicial = cantidad / apalancamiento 
+	const porcentajeCambio = ((precioSalida - precioEntrada) / precioEntrada) * 100
 	const multiplicadorPorcentaje = porcentajeCambio / 100;
 	const profitUSDT = cantidad * multiplicadorPorcentaje
-	const profitPorcentaje = (profitUSDT / margenInicial) * 100 // Porcentaje de beneficio sobre el margen inicial
-console.log(margenInicial)
-console.log(multiplicadorPorcentaje)
-console.log(profitUSDT)
-console.log(profitPorcentaje)
+	const profitPorcentaje = (profitUSDT / margenInicial) * 100 
+     
 	return {
 		margenInicial,
 		profitUSDT,
