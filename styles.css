@@ -12,6 +12,7 @@ body {
 form {
      background-color: rgb(30, 35, 41);
      padding: 10px;
+     border-radius: 10px;
 }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -110,14 +111,22 @@ input[disabled] {
      display: flex;
      margin: 20px auto;
      padding: 10px;
-     background-color: #fcd535;
+     background-color: #0047ff;
      outline: none;
      border: none;
      border-radius: 3px;
+     font-weight: 600;
      cursor: pointer;
-     color: #000;
+     color: #fff;
 }
 
 label {
      color: #dddddd;
+}
+
+.profit {
+     color: #20ac95;
+}
+.loss {
+     color: #e2464a;
 }

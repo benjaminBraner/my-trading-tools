@@ -15,7 +15,19 @@ function calcularProfit(precioEntrada, apalancamiento, cantidad, precioSalida) {
 	const multiplicadorPorcentaje = porcentajeCambio / 100;
 	const profitUSDT = cantidad * multiplicadorPorcentaje
 	const profitPorcentaje = (profitUSDT / margenInicial) * 100 
-     
+     console.log(profitUSDT)
+     console.log(profitUSDT > 0)
+     if (profitUSDT > 0) {
+          respGanancia.classList.add("profit")
+          respGanancia.classList.remove("loss")
+          respRoi.classList.add("profit")
+          respRoi.classList.remove("loss")
+     } else {
+          respGanancia.classList.remove("profit")
+          respGanancia.classList.add("loss")
+          respRoi.classList.remove("profit")
+          respRoi.classList.add("loss")
+     }
 	return {
 		margenInicial,
 		profitUSDT,
@@ -37,7 +49,7 @@ botonCalcular.addEventListener('click', function (e) {
 		precioSalida
 	)
 
-	respMargenInicial.value = margenInicial + '$'
-	respGanancia.value = profitUSDT + '$'
-	respRoi.value = profitPorcentaje + '%'
+	respMargenInicial.value = margenInicial.toFixed(2) + '$'
+	respGanancia.value = profitUSDT.toFixed(2) + '$'
+	respRoi.value = profitPorcentaje.toFixed(2) + '%'
 })
