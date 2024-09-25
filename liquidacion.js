@@ -19,6 +19,6 @@ btn.addEventListener("click", (e) => {
      const precioLiquidacionLong = calcularPrecioLiquidacion1(precioDeEntrada, apalancamiento, true);
      const precioLiquidacionShort = calcularPrecioLiquidacion1(precioDeEntrada, apalancamiento, false);
 
-     respLiquidacionLong.value = precioLiquidacionLong;
-     respLiquidacionShort.value = precioLiquidacionShort;
+     respLiquidacionLong.value = precioLiquidacionLong.toFixed(2);
+     respLiquidacionShort.value = precioLiquidacionShort.toFixed(2);
 })

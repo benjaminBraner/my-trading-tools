@@ -32,6 +32,8 @@ input[type=number] {
      min-height: 100vh;
 }
 
+
+
 .skills__title {
      color: #dddddd;
      font-size: 25px;
@@ -44,7 +46,19 @@ input[type=number] {
      align-items: center;
      width: 100%;
      height: max-content;
+     gap: 30px;
 }
+
+@media (max-width: 768px) { /* Puedes ajustar el ancho máximo según sea necesario */
+     .form-container {
+         flex-direction: column; /* Cambia la dirección a columna */
+         align-items: stretch; /* Alinea los elementos para que ocupen el ancho completo */
+     }
+ 
+     form {
+         width: 100%; /* Asegura que los formularios ocupen el 100% del ancho */
+     }
+ }
 
 .contact__form {
      display: flex;
@@ -53,7 +67,9 @@ input[type=number] {
      max-width: 450px;
      min-width: 200px;
 }
-
+form h2{
+     color: #dddddd ;
+}
 .contact__input {
      padding: 15px;
      border: none;
