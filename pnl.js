@@ -2,7 +2,6 @@ const precioEntradaInput = document.getElementById('precioEntrada')
 const apalancamientoInput = document.getElementById('apalancamiento')
 const cantidadInput = document.getElementById('cantidad')
 const precioSalidaInput = document.getElementById('precioSalida')
-
 const respMargenInicial = document.getElementById('margen-inicial')
 const respGanancia = document.getElementById('ganancia')
 const respRoi = document.getElementById('roi')

@@ -1,4 +1,4 @@
-const precioEntradaInput = document.querySelector('.entry-inp-forex');
+const precioEntradaInputForex = document.querySelector('.entry-inp-forex');
 const precioStopLossInput = document.querySelector('.sl-inp-forex');
 
 // Función para manejar el evento input
@@ -28,7 +28,7 @@ console.log(input.value)
 };
 
 // Agrega el evento input a ambos inputs
-precioEntradaInput.addEventListener('input', () => handleInputChange(precioEntradaInput));
+precioEntradaInputForex.addEventListener('input', () => handleInputChange(precioEntradaInputForex));
 precioStopLossInput.addEventListener('input', () => handleInputChange(precioStopLossInput));
 
 
