@@ -1,38 +1,33 @@
-const precioEntradaInputForex = document.querySelector('.entry-inp-forex');
-const precioStopLossInput = document.querySelector('.sl-inp-forex');
-document.querySelector('.risk-inp-forex').value = "0.5";
-// Función para manejar el evento input
-
+const precioEntradaInputForex = document.querySelector('.entry-inp-forex')
+const precioStopLossInput = document.querySelector('.sl-inp-forex')
 
 function calcularTamanoPosicion() {
+	const capital = parseFloat(document.querySelector('.inp-cap-forex').value)
+	const porcentajeRiesgo = parseFloat(document.querySelector('.risk-inp-forex').value)
+	const precioEntrada = parseFloat(document.querySelector('.entry-inp-forex').value)
+	const precioStopLoss = parseFloat(document.querySelector('.sl-inp-forex').value)
+                                                                                                
+	const capitalARiesgo = capital * (porcentajeRiesgo / 100)
+     
+     const mayor = sacarMayor(precioEntrada, precioStopLoss)
+	const riesgoPorUnidad = precioEntrada == mayor ? precioEntrada - precioStopLoss : precioStopLoss - precioEntrada
+	const tamanoPosicionDolares = capitalARiesgo * (mayor / riesgoPorUnidad)
+     const tamanoPosicionLotes = convertirADolaresALotes(tamanoPosicionDolares)
 
-	const capital = parseFloat(document.querySelector('.inp-cap-forex').value);
-     const porcentajeRiesgo = parseFloat(document.querySelector('.risk-inp-forex').value);
-     const precioEntrada = parseFloat(document.querySelector('.entry-inp-forex').value);
-     const precioStopLoss = parseFloat(document.querySelector('.sl-inp-forex').value);
-	const valorPipPorLote = 10;           
+	document.querySelector('.risk-dol-forex').value = capitalARiesgo
+	document.querySelector('.tam-pos-dolares-forex').value = tamanoPosicionDolares
+	document.querySelector('.tam-pos-act-forex').value = tamanoPosicionLotes
+}
 
-	const riesgoDolares = capital * (porcentajeRiesgo / 100);
-	
-	const stopLossPips = Math.abs(precioEntrada - precioStopLoss) * 10000;
-	
-	const tamanoPosicion = riesgoDolares / (stopLossPips * valorPipPorLote);
-	
-	function convertirEscala(numero) {
-		const valorBase = 100000; // 1 es igual a 100,000
-		return numero * valorBase;
-	 }
+const sacarMayor = (entrada, stopLoss) => entrada > stopLoss ? entrada : stopLoss;
 
 
-     document.querySelector('.risk-dol-forex').value = riesgoDolares;
-     document.querySelector('.tam-pos-dol-forex').value = convertirEscala(tamanoPosicion).toFixed(4)
-     document.querySelector('.tam-pos-act-forex').value = tamanoPosicion.toFixed(4);
-
- }
+const convertirADolaresALotes = (montoDolares, lote=100000) => montoDolares / lote;
  
- document.querySelector(".btn-calc-position-size-forex").addEventListener("click", (e) => {
-     e.preventDefault();
-     calcularTamanoPosicion();
-});
- 
- 
+
+document.querySelector('.btn-calc-position-size-forex').addEventListener('click', (e) => {
+	e.preventDefault()
+	calcularTamanoPosicion()
+})
+
+
