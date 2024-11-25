@@ -14,15 +14,15 @@ function calcularTamanoPosicion() {
 	const tamanoPosicionDolares = capitalARiesgo * (mayor / riesgoPorUnidad)
      const tamanoPosicionLotes = convertirADolaresALotes(tamanoPosicionDolares)
 
-	document.querySelector('.risk-dol-forex').value = capitalARiesgo
-	document.querySelector('.tam-pos-dolares-forex').value = tamanoPosicionDolares
-	document.querySelector('.tam-pos-act-forex').value = tamanoPosicionLotes
+	document.querySelector('.risk-dol-forex').value = capitalARiesgo.toFixed(2)
+	document.querySelector('.tam-pos-dolares-forex').value = tamanoPosicionDolares.toFixed(2)
+	document.querySelector('.tam-pos-act-forex').value = tamanoPosicionLotes.toFixed(4)
 }
 
 const sacarMayor = (entrada, stopLoss) => entrada > stopLoss ? entrada : stopLoss;
 
 
-const convertirADolaresALotes = (montoDolares, lote=100000) => montoDolares / lote;
+const convertirADolaresALotes = (montoDolares, lote=50000) => montoDolares / lote;
  
 
 document.querySelector('.btn-calc-position-size-forex').addEventListener('click', (e) => {
