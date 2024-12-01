@@ -1,33 +1,46 @@
-const precioEntradaInputForex = document.querySelector('.entry-inp-forex')
-const precioStopLossInput = document.querySelector('.sl-inp-forex')
-
 function calcularTamanoPosicion() {
-	const capital = parseFloat(document.querySelector('.inp-cap-forex').value)
+	const balance = parseFloat(document.querySelector('.inp-cap-forex').value)
 	const porcentajeRiesgo = parseFloat(document.querySelector('.risk-inp-forex').value)
 	const precioEntrada = parseFloat(document.querySelector('.entry-inp-forex').value)
 	const precioStopLoss = parseFloat(document.querySelector('.sl-inp-forex').value)
-                                                                                                
-	const capitalARiesgo = capital * (porcentajeRiesgo / 100)
-     
-     const mayor = sacarMayor(precioEntrada, precioStopLoss)
-	const riesgoPorUnidad = precioEntrada == mayor ? precioEntrada - precioStopLoss : precioStopLoss - precioEntrada
-	const tamanoPosicionDolares = capitalARiesgo * (mayor / riesgoPorUnidad)
-     const tamanoPosicionLotes = convertirADolaresALotes(tamanoPosicionDolares)
+	const instrumento = document.querySelector('.instrumento-inp').value
 
-	document.querySelector('.risk-dol-forex').value = capitalARiesgo.toFixed(2)
-	document.querySelector('.tam-pos-dolares-forex').value = tamanoPosicionDolares.toFixed(2)
-	document.querySelector('.tam-pos-act-forex').value = tamanoPosicionLotes.toFixed(4)
+	if ([balance, porcentajeRiesgo, precioEntrada, precioStopLoss].some(val => isNaN(val) || val <= 0)) {
+		alert('Por favor, introduce valores válidos.');
+		return;
+	 }
+	 
+	const montoArriesgado = balance * (porcentajeRiesgo / 100)
+	const distanciaStopLoss = Math.abs(precioEntrada - precioStopLoss) 
+	
+	if (distanciaStopLoss === 0) {
+		alert('El Stop Loss no puede ser igual al precio de entrada.')
+		return
+	}
+
+	const lote = instrumento === 'forex' ? 100000 : 100
+	const posicionLotes = (montoArriesgado / distanciaStopLoss) / lote
+	const posicionUSD = posicionLotes * lote * precioEntrada
+
+	document.querySelector('.riesgo-dolares').value = montoArriesgado.toFixed(2)
+	document.querySelector('.tamaño-posicion-dolares').value = posicionUSD.toFixed(2)
+	document.querySelector('.tamaño-posicion-lotes').value = posicionLotes.toFixed(4)
 }
 
-const sacarMayor = (entrada, stopLoss) => entrada > stopLoss ? entrada : stopLoss;
-
-
-const convertirADolaresALotes = (montoDolares, lote=50000) => montoDolares / lote;
- 
-
-document.querySelector('.btn-calc-position-size-forex').addEventListener('click', (e) => {
+document.querySelector('.btn-calc-tamaño-posicion').addEventListener('click', (e) => {
 	e.preventDefault()
 	calcularTamanoPosicion()
 })
 
 
+
+
+document.querySelector('.instrumento-inp').addEventListener('change', (e) => {
+	const form = document.querySelector('.form-posicion');
+	
+	if (e.target.value === 'xau') {
+	    form.classList.add('color-xau');  
+	} else {
+	    form.classList.remove('color-xau');  
+	}
+ });
