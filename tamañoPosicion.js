@@ -1,3 +1,7 @@
+
+const porcentajeRiesgoGuardado = localStorage.getItem('porcentajeRiesgo');
+porcentajeRiesgoGuardado && (document.querySelector('.risk-inp-forex').value = porcentajeRiesgoGuardado)
+
 function calcularTamanoPosicion() {
 	const balance = parseFloat(document.querySelector('.inp-cap-forex').value)
 	const porcentajeRiesgo = parseFloat(document.querySelector('.risk-inp-forex').value)
@@ -25,13 +29,16 @@ function calcularTamanoPosicion() {
 	document.querySelector('.riesgo-dolares').value = montoArriesgado.toFixed(2)
 	document.querySelector('.tamaño-posicion-dolares').value = posicionUSD.toFixed(2)
 	document.querySelector('.tamaño-posicion-lotes').value = posicionLotes.toFixed(4)
+	
+	localStorage.setItem('porcentajeRiesgo', porcentajeRiesgo)
 }
+
+
 
 document.querySelector('.btn-calc-tamaño-posicion').addEventListener('click', (e) => {
 	e.preventDefault()
 	calcularTamanoPosicion()
 })
-
 
 
 
