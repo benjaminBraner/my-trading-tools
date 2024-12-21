@@ -18,10 +18,19 @@ function calcularTamanoPosicion() {
 		return
 	}
 
-	const lote = instrumento === 'forex' ? 100000 : 100
-	const posicionLotes = (montoArriesgado / distanciaStopLoss) / lote
+	
+	//------------------------------------------------------------------------------------------
+	
+	const lote = instrumento === 'xau' ? 100 : 100000
+	let posicionLotes = (montoArriesgado / distanciaStopLoss) / lote
 	const posicionUSD = posicionLotes * lote * precioEntrada
+	
+	if (instrumento === 'forex') {
+		posicionLotes = posicionUSD / lote;
+	}
 
+	//------------------------------------------------------------------------------------------
+	
 	document.querySelector('.riesgo-dolares').value = montoArriesgado.toFixed(2)
 	document.querySelector('.tamaño-posicion-dolares').value = posicionUSD.toFixed(2)
 	document.querySelector('.tamaño-posicion-lotes').value = posicionLotes.toFixed(4)
