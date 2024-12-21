@@ -23,6 +23,7 @@ function calcularTamanoPosicion() {
 	}
 
 	const lote = instrumento === 'forex' ? 100000 : 100
+	console.log(instrumento)
 	const posicionLotes = (montoArriesgado / distanciaStopLoss) / lote
 	const posicionUSD = posicionLotes * lote * precioEntrada
 

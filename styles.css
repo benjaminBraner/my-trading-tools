@@ -45,15 +45,24 @@ select {
      cursor: pointer;
  }
  
+ label {
+     color: #dddddd;
+}
 
+.profit {
+     color: #20ac95;
+}
+
+.loss {
+     color: #e2464a;
+}
+ 
 .section {
      max-width: 1300px;
      margin: 0 auto;
      padding: 20px;
      min-height: 100vh;
 }
-
-
 
 .skills__title {
      color: #dddddd;
@@ -100,8 +109,6 @@ form h2{
      background-color: rgb(43, 49, 57);
      color: #f1f1f1;
 }
-
-
 
 .cont {
      background-color: #fff;
@@ -155,15 +162,4 @@ input[disabled] {
      font-weight: 600;
      cursor: pointer;
      color: #fff;
-}
-
-label {
-     color: #dddddd;
-}
-
-.profit {
-     color: #20ac95;
-}
-.loss {
-     color: #e2464a;
 }
