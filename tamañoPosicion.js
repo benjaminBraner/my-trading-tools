@@ -43,7 +43,6 @@ document.querySelector('.btn-calc-tamaño-posicion').addEventListener('click', (
 
 
 
-
 document.querySelector('.instrumento-inp').addEventListener('change', (e) => {
 	const form = document.querySelector('.form-posicion');
 	
